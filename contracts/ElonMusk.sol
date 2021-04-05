@@ -26,6 +26,6 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
         require(elon2.ownerOf(tokenIdOfEL2) == msg.sender);
         require(elon3.ownerOf(tokenIdOfEL3) == msg.sender);
         state = true;
-        return(state);
+        
     }
 }
