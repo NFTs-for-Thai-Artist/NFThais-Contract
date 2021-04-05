@@ -7,14 +7,25 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol";
 
 contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
-    constructor(IERC721 elon0_, IERC721 elon1_, IERC721 elon2_, IERC721 elon3_) {
-        IERC721 _elon0 = elon0_;
-        IERC721 _elon1 = elon1_;
-        IERC721 _elon2 = elon2_;
-        IERC721 _elon3 = elon3_;
+    IERC721 elon0;
+    IERC721 elon1;
+    IERC721 elon2;
+    IERC721 elon3;
+    bool public state;
+    
+    constructor() public {
+        //_registerInterface(IERC721Receiver.onERC721Received.selector);
+        elon0 = IERC721(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
+        elon1 = IERC721(0xcD6a42782d230D7c13A74ddec5dD140e55499Df9);
+        elon2 = IERC721(0xaE036c65C649172b43ef7156b009c6221B596B8b);
+        elon3 = IERC721(0x9d83e140330758a8fFD07F8Bd73e86ebcA8a5692);
     }
     
-    function doSomethingWith721Token(IERC721 nftAddress, uint256 tokenId) external {
-        // do something here
+    function check(uint256 tokenIdOfEL1, uint256 tokenIdOfEL2, uint256 tokenIdOfEL3) public returns(bool) {
+        require(elon1.ownerOf(tokenIdOfEL1) == msg.sender);
+        require(elon2.ownerOf(tokenIdOfEL2) == msg.sender);
+        require(elon3.ownerOf(tokenIdOfEL3) == msg.sender);
+        state = true;
+        return(state);
     }
 }
