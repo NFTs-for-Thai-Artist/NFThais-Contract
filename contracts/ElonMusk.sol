@@ -7,25 +7,42 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol";
 
 contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
-    IERC721 elon0;
-    IERC721 elon1;
-    IERC721 elon2;
-    IERC721 elon3;
-    bool public state;
     
-    constructor() public {
+    IERC721 public elon0;
+    IERC721 public elon1;
+    IERC721 public elon2;
+    IERC721 public elon3;
+    address public owner;
+    uint256 public tokenIdOfEL0;
+    address public contractAddress;
+    
+    constructor() public{
+        
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
-        elon0 = IERC721(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
-        elon1 = IERC721(0xcD6a42782d230D7c13A74ddec5dD140e55499Df9);
-        elon2 = IERC721(0xaE036c65C649172b43ef7156b009c6221B596B8b);
-        elon3 = IERC721(0x9d83e140330758a8fFD07F8Bd73e86ebcA8a5692);
+        elon0 = IERC721(0xDA0bab807633f07f013f94DD0E6A4F96F8742B53);
+        elon1 = IERC721(0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99);
+        elon2 = IERC721(0xddaAd340b0f1Ef65169Ae5E41A8b10776a75482d);
+        elon3 = IERC721(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
+        owner = msg.sender;
+        tokenIdOfEL0 = 0;
+        contractAddress = msg.sender;
     }
     
-    function check(uint256 tokenIdOfEL1, uint256 tokenIdOfEL2, uint256 tokenIdOfEL3) public returns(bool) {
+    function updateContractAddress(address _contractAddress) public {
+        contractAddress = _contractAddress;
+    }
+    
+    function tokenIdIncrease() public {
+        tokenIdOfEL0++;
+    }
+    
+    function claim(uint256 tokenIdOfEL1, uint256 tokenIdOfEL2, uint256 tokenIdOfEL3) public payable {
         require(elon1.ownerOf(tokenIdOfEL1) == msg.sender);
         require(elon2.ownerOf(tokenIdOfEL2) == msg.sender);
         require(elon3.ownerOf(tokenIdOfEL3) == msg.sender);
-        state = true;
-        
+        tokenIdIncrease();
+        elon0.approve(contractAddress, tokenIdOfEL0);
+        elon0.safeTransferFrom(owner, msg.sender, tokenIdOfEL0);
     }
+    
 }
