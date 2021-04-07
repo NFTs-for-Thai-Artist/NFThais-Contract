@@ -13,11 +13,11 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
     IERC721 public elon2;
     IERC721 public elon3;
     address public owner;
-    address payable collector;
+    address collector;
     uint256 public tokenIdOfEL0;
     IERC721Receiver public contractAddress;
     
-    constructor() public {
+    constructor(uint _intTokenId) public {
         
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
         elon0 = IERC721(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
@@ -25,7 +25,7 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
         elon2 = IERC721(0xddaAd340b0f1Ef65169Ae5E41A8b10776a75482d);
         elon3 = IERC721(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
         owner = msg.sender;
-        tokenIdOfEL0 = 0;
+        tokenIdOfEL0 = _intTokenId;
     }
     
     modifier onlyOwner() {
@@ -50,10 +50,11 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
         require(elon1.ownerOf(tokenIdOfEL1) == msg.sender);
         require(elon2.ownerOf(tokenIdOfEL2) == msg.sender);
         require(elon3.ownerOf(tokenIdOfEL3) == msg.sender);
-        collector = msg.sender; 
+        
         tokenIdIncrease();
         emit Claim();
-        collector.safeTransfer(elon0, tokenIdOfEL0); //transfer nft
+        collector = msg.sender; 
+        collector.transfer(elon0, tokenIdOfEL0); //transfer nft
         
         
     }
