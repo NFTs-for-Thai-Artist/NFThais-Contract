@@ -13,26 +13,36 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
     IERC721 public elon2;
     IERC721 public elon3;
     address public owner;
+    address payable collector;
     uint256 public tokenIdOfEL0;
-    address public contractAddress;
+    IERC721Receiver public contractAddress;
     
-    constructor() public{
+    constructor() public {
         
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
-        elon0 = IERC721(0xDA0bab807633f07f013f94DD0E6A4F96F8742B53);
+        elon0 = IERC721(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
         elon1 = IERC721(0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99);
         elon2 = IERC721(0xddaAd340b0f1Ef65169Ae5E41A8b10776a75482d);
         elon3 = IERC721(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
         owner = msg.sender;
         tokenIdOfEL0 = 0;
-        contractAddress = msg.sender;
     }
     
-    function updateContractAddress(address _contractAddress) public {
-        contractAddress = _contractAddress;
+    modifier onlyOwner() {
+        require(
+            msg.sender == owner,
+            "Only owner can call this."
+        );
+        _;
     }
     
-    function tokenIdIncrease() public {
+    function updateContractAddress(address _contractAddress) public onlyOwner {
+        contractAddress = IERC721Receiver(_contractAddress);
+    }
+    
+    event Claim();
+    
+    function tokenIdIncrease() internal {
         tokenIdOfEL0++;
     }
     
@@ -40,9 +50,12 @@ contract Receiver721Example is IERC721Receiver, ERC165, ERC721Holder {
         require(elon1.ownerOf(tokenIdOfEL1) == msg.sender);
         require(elon2.ownerOf(tokenIdOfEL2) == msg.sender);
         require(elon3.ownerOf(tokenIdOfEL3) == msg.sender);
+        collector = msg.sender; 
         tokenIdIncrease();
-        elon0.approve(contractAddress, tokenIdOfEL0);
-        elon0.safeTransferFrom(owner, msg.sender, tokenIdOfEL0);
+        emit Claim();
+        collector.safeTransfer(elon0, tokenIdOfEL0); //transfer nft
+        
+        
     }
     
 }
