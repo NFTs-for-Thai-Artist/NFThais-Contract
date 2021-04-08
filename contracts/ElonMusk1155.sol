@@ -7,10 +7,8 @@ import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
 contract ElonMusk1155Receiver is ERC1155Holder {
     
-    IERC1155 public elon0;
-    IERC1155 public elon1;
-    IERC1155 public elon2;
-    IERC1155 public elon3;
+    IERC1155 public elon;
+
     address public owner;
     address collector;
     
@@ -25,12 +23,8 @@ contract ElonMusk1155Receiver is ERC1155Holder {
     ERC1155Holder public contractAddress;
     
     constructor() public {
-        
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
-        elon0 = IERC1155(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
-        elon1 = IERC1155(0x9D7f74d0C41E726EC95884E0e97Fa6129e3b5E99);
-        elon2 = IERC1155(0xddaAd340b0f1Ef65169Ae5E41A8b10776a75482d);
-        elon3 = IERC1155(0xb27A31f1b0AF2946B7F582768f03239b1eC07c2c);
+        elon = IERC1155(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
         owner = msg.sender;
     }
     
@@ -48,21 +42,15 @@ contract ElonMusk1155Receiver is ERC1155Holder {
     
     event Claim(address indexed claimer);
     
-    function tokenIdIncrease() internal {
-        tokenIdOfEL0++;
-    }
-    
     function claim(uint256 tokenIdOfEL1, uint256 tokenIdOfEL2, uint256 tokenIdOfEL3) public payable {
-        require(elon1.balanceOf(msg.sender, tokenIdOfEL1) >= 1);
-        require(elon2.balanceOf(msg.sender, tokenIdOfEL2) >= 1);
-        require(elon3.balanceOf(msg.sender, tokenIdOfEL3) >= 1);
+        require(elon.balanceOf(msg.sender, tokenIdOfEL1) >= 1);
+        require(elon.balanceOf(msg.sender, tokenIdOfEL2) >= 1);
+        require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1);
         
-        //tokenIdIncrease();
+        // Transfer nft directly from the owner (Require owner approval)
+        safeTransferFrom(contractAddress, msg.sender, tokenIdOfEL0, 1, "");
+        
         emit Claim(msg.sender);
-        collector = msg.sender; 
-        collector.transfer(elon0, tokenIdOfEL0); //transfer nft
-        
-        
     }
     
 }
