@@ -1,0 +1,93 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"methods": {}
+		},
+		"userdoc": {
+			"methods": {}
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/opensea/ERC1155Test.sol": "OwnableDelegateProxy"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/opensea/ERC1155Test.sol": {
+			"keccak256": "0xdebe6bb6e4721de94e5ceda214fba75c04d267cbc32790e9834437df591909b8",
+			"urls": [
+				"bzz-raw://37ec033b0fad0943c7fd3c8ec4e5d2d47ffd79a844a46c9bf25791fa446335d6",
+				"dweb:/ipfs/QmcjV8rzsKXLmQGfSQbfSNaMKmvbzV29nHNH5sAUCsSj4D"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/interfaces/IERC1155.sol": {
+			"keccak256": "0x68b549031029b9f8a0eec4da4a9c7fd83030a6e666fefffbe97d3d683c0a35d4",
+			"urls": [
+				"bzz-raw://d4bcbb13f2b0b68061c37a5d7e4290f7dea7f27de342e53f2bb4b2562ff8beb2",
+				"dweb:/ipfs/QmS8huMSyernufyPXqWDBVVPzzpuFgFdsgA2g4PZncgmHj"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/interfaces/IERC1155TokenReceiver.sol": {
+			"keccak256": "0x3cdf862cc5d3403ea83f548e5a5fbd11d4fb9a4f2da9b8b234c1799419b39f2b",
+			"urls": [
+				"bzz-raw://49bfef837d71ee5cf3e4aba2bbdc449c4226517488915cf3294c1e056d21eeeb",
+				"dweb:/ipfs/Qmazz5HHpkRS7esc6y7f5RtRBLZAxjvFuuBX698ZFT4NoP"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/interfaces/IERC165.sol": {
+			"keccak256": "0xa652c218ad6778ac294c6900f50e8f3c3f373277a7f9afba24297f986805e2bc",
+			"urls": [
+				"bzz-raw://a4fb41b4291a623b9725ee5d6b363377b94b302ead873f57f4ca18b81e6a7b21",
+				"dweb:/ipfs/QmPiWmRMktZTrUJPD3pYqZmBzVUdf3f9WmgHfcBK2Qgi8U"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/tokens/ERC1155/ERC1155.sol": {
+			"keccak256": "0x73b2983ddcb1103fdc75a96e8c29865be6df0feefc8b7fa016d218b70b275a8f",
+			"urls": [
+				"bzz-raw://7fbd8fdc0c22001f4fa6f60af2f0f70b8f6e0b2096b3315eb85686966f432244",
+				"dweb:/ipfs/QmNz2uFFBUy4BJFNS37BHRxDuzH9x9eYXp1FByYkX46iZX"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/tokens/ERC1155/ERC1155Metadata.sol": {
+			"keccak256": "0x89f189ac68d98a82a78b9d8625cc80640e725ec9c67f01e2e61e11885aac6561",
+			"urls": [
+				"bzz-raw://e339f8f561ee79e9a65c52a900b239a42c96eb86b193cb538cdf4e66ebd25b86",
+				"dweb:/ipfs/QmWffW6xg3GYBpTEf53GzF13ccH5q1Agz4eFKpkjbBfBsF"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/tokens/ERC1155/ERC1155MintBurn.sol": {
+			"keccak256": "0xa979a927aaa5d0c6d46b0995675f8bdd99e74e74f548f111c8af695d305bf817",
+			"urls": [
+				"bzz-raw://ccd7dc822b2c754ab23716ac29fe853c96b841b186d63a941491f3a202842e41",
+				"dweb:/ipfs/QmXPFvGKwdfD7bH1kDpE5HqaCUsG2tETKXsPM1jaFuX1RT"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/utils/Address.sol": {
+			"keccak256": "0x92f1e6990efaaf076a66e47541e40f90c7146c045b3ad9b74e1f76e510a431f4",
+			"urls": [
+				"bzz-raw://a79582d210212c4fb1420fa5c7b438731bf7fcb172080e8074cc257793adb476",
+				"dweb:/ipfs/QmRTFVRJCStccWvAWdPKatBJLrbJqPuZopXCLKWJ8UtaPA"
+			]
+		},
+		"https://github.com/ProjectOpenSea/multi-token-standard/contracts/utils/SafeMath.sol": {
+			"keccak256": "0xe244d8105233bbf40e1a904aad734d06a12a042125ab5b54602b139a944f93eb",
+			"urls": [
+				"bzz-raw://485341243f10e172ba41995f6ee10d9f472ab19b47dc8832ad7d9fc920da99e2",
+				"dweb:/ipfs/QmPSRmyKZx6rTGPjBzk5wNnVkGweBAjyxpLa277KHhKVQs"
+			]
+		}
+	},
+	"version": 1
+}
