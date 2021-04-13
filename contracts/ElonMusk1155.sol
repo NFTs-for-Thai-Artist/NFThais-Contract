@@ -46,7 +46,7 @@ contract ElonMusk1155 {
     
     event Claim(address indexed claimer);
     
-    function claim(uint256 tokenIdOfEL1, uint256 tokenIdOfEL2, uint256 tokenIdOfEL3) public payable {
+    function claim() public {
         require(elon.balanceOf(msg.sender, tokenIdOfEL1) >= 1);
         require(elon.balanceOf(msg.sender, tokenIdOfEL2) >= 1);
         require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1);

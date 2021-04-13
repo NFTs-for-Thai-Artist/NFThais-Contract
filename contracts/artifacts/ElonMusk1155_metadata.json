@@ -43,26 +43,10 @@
 				"type": "event"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "tokenIdOfEL1",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenIdOfEL2",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "tokenIdOfEL3",
-						"type": "uint256"
-					}
-				],
+				"inputs": [],
 				"name": "claim",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -246,11 +230,11 @@
 			]
 		},
 		"contracts/ElonMusk1155.sol": {
-			"keccak256": "0xc60a9dbf342804d3748bd11130781bdf5c4332fbdf536242a14d56d6dd4982d0",
+			"keccak256": "0x93186b436c34ff7cea1950233235d2a25a03efd94b2f92ff1b498533ec2c9b76",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c32f18339849836cc57f75cd3382dd1203ca2bc86f05790e63b9527526633f88",
-				"dweb:/ipfs/QmSfrwE2bvt1gW2voxnbrGiVG6VHQYLCbwaYqLHoHQhYcd"
+				"bzz-raw://96ee99d06fc4b193fe107c3a2dddccd9ad2f12559216c0a6187b22a1b66ac847",
+				"dweb:/ipfs/QmfLSSKeJd5fE77E7teWxM8GkiyryZojjiAKDhfdNDhgbM"
 			]
 		}
 	},
