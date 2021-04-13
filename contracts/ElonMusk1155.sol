@@ -20,12 +20,12 @@ contract ElonMusk1155 {
     uint256 public tokenIdOfEL2 = 2;
     uint256 public tokenIdOfEL3 = 3;
     
-    address public contractAddress;
+    address public minterAddress;
     
-    constructor() public {
+    constructor(address _minterAddress) public {
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
-        contractAddress = 0xd9145CCE52D386f254917e481eB44e9943F39138;
-        elon = IERC1155(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
+        minterAddress = _minterAddress;
+        elon = IERC1155(0xd9145CCE52D386f254917e481eB44e9943F39138);
         owner = msg.sender;
     }
     
@@ -37,22 +37,22 @@ contract ElonMusk1155 {
         _;
     }
     
-    event UpdateContractAddress(address indexed oldContractAddress, address indexed contractAddress);
+    event UpdateMinterAddress(address indexed oldMinterAddress, address indexed minterAddress);
     
-    function updateContractAddress(address _contractAddress) public onlyOwner {
-        emit UpdateContractAddress(contractAddress, _contractAddress);
-        contractAddress = _contractAddress;
+    function updateMinterAddress(address _minterAddress) public onlyOwner {
+        emit UpdateMinterAddress(minterAddress, _minterAddress);
+        minterAddress = _minterAddress;
     }
     
     event Claim(address indexed claimer);
     
     function claim() public {
-        require(elon.balanceOf(msg.sender, tokenIdOfEL1) >= 1);
-        require(elon.balanceOf(msg.sender, tokenIdOfEL2) >= 1);
-        require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1);
+        require(elon.balanceOf(msg.sender, tokenIdOfEL1) >= 1, "Not enough token 1");
+        require(elon.balanceOf(msg.sender, tokenIdOfEL2) >= 1, "Not enough token 2");
+        require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1, "Not enough token 3");
         
         // Transfer nft directly from the owner (Require owner approval)
-        elon.safeTransferFrom(contractAddress, msg.sender, tokenIdOfEL0, 1, "");
+        elon.safeTransferFrom(minterAddress, msg.sender, tokenIdOfEL0, 1, "");
         
         emit Claim(msg.sender);
     }

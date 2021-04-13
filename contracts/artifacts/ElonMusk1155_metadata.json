@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_minterAddress",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -29,17 +35,17 @@
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "oldContractAddress",
+						"name": "oldMinterAddress",
 						"type": "address"
 					},
 					{
 						"indexed": true,
 						"internalType": "address",
-						"name": "contractAddress",
+						"name": "minterAddress",
 						"type": "address"
 					}
 				],
-				"name": "UpdateContractAddress",
+				"name": "UpdateMinterAddress",
 				"type": "event"
 			},
 			{
@@ -51,10 +57,10 @@
 			},
 			{
 				"inputs": [],
-				"name": "contractAddress",
+				"name": "elon",
 				"outputs": [
 					{
-						"internalType": "address",
+						"internalType": "contract IERC1155",
 						"name": "",
 						"type": "address"
 					}
@@ -64,10 +70,10 @@
 			},
 			{
 				"inputs": [],
-				"name": "elon",
+				"name": "minterAddress",
 				"outputs": [
 					{
-						"internalType": "contract IERC1155",
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -144,11 +150,11 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_contractAddress",
+						"name": "_minterAddress",
 						"type": "address"
 					}
 				],
-				"name": "updateContractAddress",
+				"name": "updateMinterAddress",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -230,11 +236,11 @@
 			]
 		},
 		"contracts/ElonMusk1155.sol": {
-			"keccak256": "0x93186b436c34ff7cea1950233235d2a25a03efd94b2f92ff1b498533ec2c9b76",
+			"keccak256": "0x5c4aaf238bab9f6e703db623e7baaa725d352ec2649956b9b5dfede4a4d6bb40",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://96ee99d06fc4b193fe107c3a2dddccd9ad2f12559216c0a6187b22a1b66ac847",
-				"dweb:/ipfs/QmfLSSKeJd5fE77E7teWxM8GkiyryZojjiAKDhfdNDhgbM"
+				"bzz-raw://9bd187fcc783d63a9e3679916d57aae6e1e287ccd6005c954addb8c29bf00ecf",
+				"dweb:/ipfs/QmVnvR7NYqWGmb4yhrCvShLTMou5seKQgxa4W4b4faXuY5"
 			]
 		}
 	},
