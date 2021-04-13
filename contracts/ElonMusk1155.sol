@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/introspection/ERC165.sol";
-import "@openzeppelin/contracts/token/ERC1155/ERC1155Holder.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
 contract ElonMusk1155Receiver is ERC1155Holder {
@@ -13,17 +13,18 @@ contract ElonMusk1155Receiver is ERC1155Holder {
     address collector;
     
     // This is the set reward tokenId
-    uint256 public tokenIdOfEL0 = 0;
+    uint256 public tokenIdOfEL0 = 4;
     
     // This is the required nft
     uint256 public tokenIdOfEL1 = 1;
     uint256 public tokenIdOfEL2 = 2;
     uint256 public tokenIdOfEL3 = 3;
     
-    ERC1155Holder public contractAddress;
+    address public contractAddress;
     
     constructor() public {
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
+        contractAddress = 0xd9145CCE52D386f254917e481eB44e9943F39138;
         elon = IERC1155(0xEc29164D68c4992cEdd1D386118A47143fdcF142);
         owner = msg.sender;
     }
@@ -36,8 +37,11 @@ contract ElonMusk1155Receiver is ERC1155Holder {
         _;
     }
     
+    event UpdateContractAddress(address indexed contractAddress);
+    
     function updateContractAddress(address _contractAddress) public onlyOwner {
-        contractAddress = ERC1155Holder(_contractAddress);
+        contractAddress = _contractAddress;
+        emit UpdateContractAddress(contractAddress);
     }
     
     event Claim(address indexed claimer);
@@ -48,7 +52,7 @@ contract ElonMusk1155Receiver is ERC1155Holder {
         require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1);
         
         // Transfer nft directly from the owner (Require owner approval)
-        safeTransferFrom(contractAddress, msg.sender, tokenIdOfEL0, 1, "");
+        elon.safeTransferFrom(contractAddress, msg.sender, tokenIdOfEL0, 1, "");
         
         emit Claim(msg.sender);
     }
