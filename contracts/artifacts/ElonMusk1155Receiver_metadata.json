@@ -29,6 +29,12 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "oldContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "contractAddress",
 						"type": "address"
 					}
@@ -341,11 +347,11 @@
 			]
 		},
 		"contracts/ElonMusk1155.sol": {
-			"keccak256": "0x854621b20a8b5391808a06fc352e919998eb01464bcfb486a499761693524b5e",
+			"keccak256": "0x3bb4c03722a6e13fa7afb2accd02a74a4640563efdaeaa9f556f96513ca9b278",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1d6189cdf607631df245e98d762bae86d51aedc9caaa605534c584562e5191a4",
-				"dweb:/ipfs/QmUeEky6x6StR4pX8VFe189LMa2RaUPgPnusS34dFnmSK8"
+				"bzz-raw://5fe721ffc701036bf07c2358683d9d915af10befcbb34b11830054b836c149ad",
+				"dweb:/ipfs/QmU49xsfs35TFLxwZkd3g2DuBn6qHdCkaUrWUNnVCedaXb"
 			]
 		}
 	},

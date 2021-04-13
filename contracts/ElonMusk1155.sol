@@ -37,11 +37,11 @@ contract ElonMusk1155Receiver is ERC1155Holder {
         _;
     }
     
-    event UpdateContractAddress(address indexed contractAddress);
+    event UpdateContractAddress(address indexed oldContractAddress, address indexed contractAddress);
     
     function updateContractAddress(address _contractAddress) public onlyOwner {
+        emit UpdateContractAddress(contractAddress, _contractAddress);
         contractAddress = _contractAddress;
-        emit UpdateContractAddress(contractAddress);
     }
     
     event Claim(address indexed claimer);
