@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
 import "@openzeppelin/contracts/token/ERC1155/utils/ERC1155Holder.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 
-contract ElonMusk1155Receiver is ERC1155Holder {
+contract ElonMusk1155 {
     
     IERC1155 public elon;
 
