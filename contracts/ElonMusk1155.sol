@@ -22,6 +22,8 @@ contract ElonMusk1155 {
     
     address public minterAddress;
     
+    mapping(address => bool) public alreadyClaimed;
+    
     constructor(address _minterAddress) public {
         //_registerInterface(IERC721Receiver.onERC721Received.selector);
         minterAddress = _minterAddress;
@@ -47,12 +49,15 @@ contract ElonMusk1155 {
     event Claim(address indexed claimer);
     
     function claim() public {
+        require(!alreadyClaimed[msg.sender], "Already Claimed");
         require(elon.balanceOf(msg.sender, tokenIdOfEL1) >= 1, "Not enough token 1");
         require(elon.balanceOf(msg.sender, tokenIdOfEL2) >= 1, "Not enough token 2");
         require(elon.balanceOf(msg.sender, tokenIdOfEL3) >= 1, "Not enough token 3");
         
         // Transfer nft directly from the owner (Require owner approval)
         elon.safeTransferFrom(minterAddress, msg.sender, tokenIdOfEL0, 1, "");
+        
+        alreadyClaimed[msg.sender] = true;
         
         emit Claim(msg.sender);
     }
